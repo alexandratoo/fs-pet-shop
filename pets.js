@@ -32,7 +32,7 @@
          }
 
          var pets = JSON.parse(data)
-         var age = process.argv[3]
+         var age = Number(process.argv[3]);
          var kind = process.argv[4]
         var name = process.argv[5]
 
