@@ -39,7 +39,7 @@ const fs = require('fs')
          let petObj = {}
       if (!name){
          console.error(`Usage: ${node} ${file} create AGE KIND NAME`);
- +         process.exit(1)
+         process.exit(1)
  }else{
    petObj.age = Number(age);
    petObj.kind = kind;
