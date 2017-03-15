@@ -10,7 +10,7 @@ let petsPath = path.join(__dirname, 'pets.json');
  let server = http.createServer(function(req, res){
     if (req.method === 'GET' && req.url === '/pets') {
 
-+     fs.readFile(petsPath, 'utf8', function (err, data){
+     fs.readFile(petsPath, 'utf8', function (err, data){
           if (err) throw err;
           res.setHeader('Content-Type', 'application/json');
           res.end(data);
@@ -41,3 +41,4 @@ let petsPath = path.join(__dirname, 'pets.json');
       res.end('Not Found');
       }
  })
+module.exports = server;
