@@ -29,5 +29,12 @@ let petsPath = path.join(__dirname, 'pets.json');
 });
 
 app.patch('/pets:index', function(req, res){
-  if
+  if (Number.isNaN(age) || index < 0 || index >= pets.length) {
+    return res.sendStatus(404);
+  }
+
 })
+app.listen(app.get('port'), function() {
+  console.log('Listening on', app.get('port'));
+});
+ module.exports = app;
