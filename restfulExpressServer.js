@@ -53,15 +53,15 @@ app.post('/pets', function(req, res, next){
 })
 app.patch('/pets/1', function(req, res, next){
    let pet = req.body
-   if (!pet || pet.name == ''){
+   if (!pet || pet.name === ''){
       return res.sendStatus(400)
    }
-   else if (pet.kind == undefined) {
+   else if (pet.kind === undefined) {
       fs.readFile(petsPath, 'utf8', function (err, data){
          if (err) throw err;
          let pets = JSON.parse(data)
-         let updatePet = pets[1]
-         updatePet.age = pet.age
+         let newPet = pets[1]
+         newPet.age = pet.age
          pet = pets[1]
          res.send(pet)
           fs.writeFile(petsPath, JSON.stringify(pets), function(err){
@@ -99,7 +99,6 @@ app.delete('/pets/1', function(req, res){
       })
    }
 })
-
 var shady = function (){
 }
 app.use(function(req, res) {
