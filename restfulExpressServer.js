@@ -100,10 +100,8 @@ app.delete('/pets/1', function(req, res){
    }
 })
 
-let tryout = function (){
-
+var shady = function (){
 }
-
 app.use(function(req, res) {
   res.sendStatus(404);
 });
