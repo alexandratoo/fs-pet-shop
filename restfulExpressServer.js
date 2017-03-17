@@ -12,6 +12,8 @@ const port = process.env.PORT || 8000;
 let petsPath = path.join(__dirname, 'pets.json');
 
  app.disable('x-powered-by');
+fs.readFile('pets.json', 'utf8', (err, petsJSON)=> {
+  let pets = JSON.parse(petsJSON)
 
  app.post('/pets', function(req, res) {
    var pet = req.body;
@@ -24,15 +26,31 @@ let petsPath = path.join(__dirname, 'pets.json');
 
    res.send(pet);
  });
- app.get('/pets/:3', function(req, res) {
-  res.send(pets);
+ app.get('/pets/:index', function(req, res) {
+  res.send(pet);
 });
 
 app.patch('/pets:index', function(req, res){
-  if (Number.isNaN(age) || index < 0 || index >= pets.length) {
+  if (Number.isNaN(index) || index < 0 || index >= pets.length) {
+
+  }
+  let pet = req.body;
+  if(!pet){
+      return res.sendStatus(404);
+  }
+
+})
+app.delete('/pets/:index', function(req, res) {
+  var index = Number.parseInt(req.params.index);
+
+  if (Number.isNaN(index) || index < 0 || index >= pets.length) {
     return res.sendStatus(404);
   }
 
+  var pet = pets.splice(index, 1)[0];
+
+  res.send(pet);
+});
 })
 app.listen(app.get('port'), function() {
   console.log('Listening on', app.get('port'));
