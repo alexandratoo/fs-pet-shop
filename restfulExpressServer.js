@@ -36,7 +36,7 @@ app.get('/pets/:index', function(req, res, next) {
 
 app.post('/pets', function(req, res, next){
    let pet = req.body
-   if (!pet || pet.name == ''){
+   if (!pet || pet.name === ''){
       return res.sendStatus(400)
    } else {
       fs.readFile(petsPath, 'utf8', function (err, data){
